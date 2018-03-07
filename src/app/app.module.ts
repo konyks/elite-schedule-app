@@ -11,7 +11,6 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { GamePage } from '../pages/game/game';
 
 @NgModule({
   declarations: [
