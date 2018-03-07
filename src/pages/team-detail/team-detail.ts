@@ -1,3 +1,4 @@
+import { MyTeamsPage } from './../my-teams/my-teams';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -7,7 +8,11 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class TeamDetailPage {
 
+  public team: any = {};
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.team = this.navParams.data;
+    console.log('**nav paarams', this.navParams);
   }
 
   ionViewDidLoad() {
