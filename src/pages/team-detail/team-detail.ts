@@ -10,9 +10,10 @@ import { GamePage } from '../game/game';
   templateUrl: 'team-detail.html',
 })
 export class TeamDetailPage {
-
+  public dateFilter: string;
   public team: any = {};
   public games: any[];
+  public teamStanding: any = {};
   private tourneyData: any;
 
   constructor(public navCtrl: NavController,
@@ -40,6 +41,8 @@ export class TeamDetailPage {
         };
       })
       .value();
+
+    this.teamStanding = _.find(this.tourneyData.standings, { 'teamId': this.team.id });
   }
 
   getScoreDispay(isTeam1, team1Score, team2Score) {
