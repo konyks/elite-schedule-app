@@ -9,8 +9,9 @@ import * as _ from 'lodash';
 })
 export class StandingsPage {
   public allStandings: any[];
+  public divisionFilter = 'all';
   public standings: any[];
-  public team: any[];
+  public team: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -23,16 +24,9 @@ export class StandingsPage {
 
     this.allStandings = torneyData.standings;
 
-    // this.allStandings =
-    //   _.chain(this.standings)
-    //     .groupBy('division')
-    //     .toPairs()
-    //     .map(item => _.zipObject(['divisionName', 'divisionStandings'], item))
-    //     .value();
-
+    this.filterDivision();
     console.log('standings:', this.standings);
     console.log('division Standings:', this.allStandings);
-
   }
 
   getHeader(record, recordIndex, records) {
@@ -40,6 +34,14 @@ export class StandingsPage {
       return record.division;
     }
     return null;
+  }
+
+  filterDivision() {
+    if (this.divisionFilter === 'all') {
+      this.standings = this.allStandings;
+    } else {
+      this.standings = _.filter(this.allStandings, s => s.divison === this.team.division);
+    }
   }
 
 }
