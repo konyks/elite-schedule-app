@@ -35,7 +35,7 @@ import { MapPage } from '../pages/map/map';
     IonicStorageModule.forRoot(),
     HttpModule,
     IonicModule.forRoot(MyApp),
-    AgmCoreModule.forRoot({ apiKey: 'TODO: ENTER API KEY HERE' })
+    AgmCoreModule.forRoot({ apiKey: 'TODO: Enter API Key Here' })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

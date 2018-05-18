@@ -17,7 +17,7 @@ export class MapPage {
   ionViewDidLoad() {
     let games = this.navParams.data;
     let tourneyData = this.eliteApi.getCurrentTourney();
-    let location = tourneyData.location[games.locationId];
+    let location = tourneyData.locations[games.locationId];
 
     this.map = {
       lat: location.latitude,
