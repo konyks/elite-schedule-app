@@ -45,7 +45,7 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
-  s
+
   goHome() {
     this.nav.push(MyTeamsPage);
   }
@@ -56,7 +56,7 @@ export class MyApp {
       dismissOnPageChange: true
     });
     loader.present();
-    this.eliteApi.getTournamentData(favorite.tournamentId).subscribe(l => this.nav.push(TeamHomePage));
+    this.eliteApi.getTournamentData(favorite.tournamentId).subscribe(l => this.nav.push(TeamHomePage, favorite.team));
   }
 
   goToTournaments() {
