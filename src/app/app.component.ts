@@ -19,8 +19,12 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-    private userSettings: UserSettings, private loadingController: LoadingController, private eliteApi: EliteApi,
+  constructor(public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private userSettings: UserSettings,
+    private loadingController: LoadingController,
+    private eliteApi: EliteApi,
     private events: Events) {
     this.initializeApp();
   }
@@ -33,11 +37,13 @@ export class MyApp {
       this.refreshFavorites();
       this.events.subscribe('favorites:changed', () => this.refreshFavorites());
       this.splashScreen.hide();
+
+      this.userSettings.initStorage().then(() => this.rootPage = MyTeamsPage);
     });
   }
 
   refreshFavorites() {
-    this.favoriteTeams = this.userSettings.getAllFavorites();
+    this.userSettings.getAllFavorites().then(favs => this.favoriteTeams = favs);
   }
 
   openPage(page) {
